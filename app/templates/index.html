@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather Pulse</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <div class="background-glow glow-one"></div>
+    <div class="background-glow glow-two"></div>
+
+    <main class="app-shell">
+      <section class="hero-card">
+        <div class="hero-copy">
+          <p class="eyebrow">Live Weather Intelligence</p>
+          <h1>Instant weather updates for any city.</h1>
+          <p class="subtext">
+            Enter a city name and get the latest temperature, humidity, and refresh time in a premium dashboard.
+          </p>
+
+          <form id="city-form" class="search-box">
+            <input id="city-input" type="text" placeholder="Enter city name" autocomplete="off" required />
+            <button type="submit">Check Weather</button>
+          </form>
+
+          <p id="status-message" class="status-message">
+            Try <strong>Chennai</strong> or <strong>London</strong> to get started.
+          </p>
+        </div>
+
+        <div class="weather-card">
+          <div class="weather-header">
+            <div>
+              <p class="city-name" id="city-name">City</p>
+              <p class="city-region" id="city-region">Awaiting request</p>
+            </div>
+            <div class="weather-badge">Live</div>
+          </div>
+
+          <div class="temperature-wrap">
+            <span class="temperature" id="temperature">--°C</span>
+            <span class="temperature-label">Current temperature</span>
+          </div>
+
+          <div class="metrics">
+            <div class="metric">
+              <span class="metric-label">Humidity</span>
+              <span class="metric-value" id="humidity">--%</span>
+            </div>
+            <div class="metric">
+              <span class="metric-label">Updated</span>
+              <span class="metric-value" id="updated-at">--</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>

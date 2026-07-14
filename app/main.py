@@ -1,15 +1,22 @@
 from fastapi import FastAPI, Depends, HTTPException
+from fastapi.responses import HTMLResponse
+from fastapi.staticfiles import StaticFiles
 from sqlalchemy.orm import Session
 from apscheduler.schedulers.background import BackgroundScheduler
+from pathlib import Path
 from .database import SessionLocal, engine
 from . import models, crud, schemas, scrapper
 
 models.Base.metadata.create_all(bind=engine)
 app = FastAPI()
 
-@app.get("/")
+BASE_DIR = Path(__file__).resolve().parent
+app.mount("/static", StaticFiles(directory=BASE_DIR / "static"), name="static")
+
+@app.get("/", response_class=HTMLResponse)
 def root():
-    return {"message": "Weather Scraper API is running", "docs": "/docs"}
+    html_path = BASE_DIR / "templates" / "index.html"
+    return HTMLResponse(content=html_path.read_text(encoding="utf-8"))
 
 def get_db():
     db = SessionLocal()
