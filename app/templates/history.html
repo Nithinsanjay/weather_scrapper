@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather History</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <div class="background-glow glow-one"></div>
+    <div class="background-glow glow-two"></div>
+
+    <main class="app-shell history-shell">
+      <section class="hero-card history-card">
+        <div class="hero-copy">
+          <p class="eyebrow">Saved Weather History</p>
+          <h1>See every collected reading for a city.</h1>
+          <p class="subtext">
+            Enter a city name to load the temperature and humidity changes stored in the database.
+          </p>
+
+          <form id="history-form" class="search-box">
+            <input id="history-city" type="text" placeholder="Enter city name" autocomplete="off" required />
+            <button type="submit">Load History</button>
+          </form>
+
+          <p id="history-status" class="status-message">
+            Try <strong>Chennai</strong> to inspect its stored history.
+          </p>
+          <a class="page-link" href="/">Back to live weather</a>
+        </div>
+
+        <div class="history-panel">
+          <div id="history-results" class="empty-state">
+            <p>No history loaded yet.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="/static/history.js"></script>
+  </body>
+</html>

@@ -25,3 +25,12 @@ def get_previous_weather(db: Session, city: str):
         .offset(1)
         .first()
     )
+
+
+def get_weather_history(db: Session, city: str):
+    return (
+        db.query(models.WeatherData)
+        .filter(func.lower(models.WeatherData.city) == city.lower())
+        .order_by(models.WeatherData.updated_at.asc())
+        .all()
+    )
